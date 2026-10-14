@@ -1836,7 +1836,7 @@ void Session::exec()
 #ifdef Q_OS_DARWIN
     std::string windowName = QString(m_Computer->name).toStdString();
 #else
-    std::string windowName = QString(m_Computer->name + " - Astral Travel " + QString(VERSION_STR)).toStdString();
+    std::string windowName = QString(m_Computer->name + " - Astral Travel").toStdString();
 #endif
 
     // AstralTravel fork: when AT_EMBED_WID is set, force windowed mode

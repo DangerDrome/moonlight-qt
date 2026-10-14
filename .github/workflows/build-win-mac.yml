@@ -40,6 +40,16 @@ jobs:
           brew install node
           npm install --global create-dmg
 
+      - name: Astral Travel icon (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          mkdir -p at.iconset
+          for s in 16 32 128 256 512; do
+            sips -z $s $s app/astraltravel-1024.png --out at.iconset/icon_${s}x${s}.png >/dev/null
+            d=$((s*2)); sips -z $d $d app/astraltravel-1024.png --out at.iconset/icon_${s}x${s}@2x.png >/dev/null
+          done
+          iconutil -c icns at.iconset -o app/moonlight.icns
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
